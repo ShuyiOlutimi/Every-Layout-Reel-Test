@@ -17,6 +17,13 @@ Suffice to say that once you delete <code>margin-left: auto;</code> and <code>ma
 
 If you decide that centering the Reel Component is important and therefore refuse to delete the <code>margin-left: auto;</code> and <code>margin-right: auto</code> from the Center Component, there is one other way to fix the horizontal scrolling issue on small screen sizes:
 
-If you remove <code>display:flex;</code> from the Stack Component, the horizontal scrolling on small screen sizes disappears. Hence the use of <code>display:flex;</code> in the Stack Component conflicts with something in the Reel Component or Center Component. The trade-off is that I cannot space elements using the Stack anymore.
+If you remove <code>display:flex;</code> from the Stack Component, the horizontal scrolling on small screen sizes disappears. Hence the use of <code>display:flex;</code> in the Stack Component conflicts with something in the Reel Component or Center Component.
 
 So far, the narrowwed cause of conflict is definitely a margin issue, but I sadly cannot pin-point beyond this. Perhaps you could help figure it out?
+
+
+EDIT: I thought the trade-off that would occure when I removed <code>display:flex;</code> from the Stack Component would be that I cannot space elements using the Stack anymore. However, I went back to read the docs and realized that the purpose of the flex declaration was to make the content stretch when the stack is split.
+
+In that context, I am not sure if the issue I raised is an issue anymore. Forgive me.
+
+However, the Stack Component Generator can be made better. Making the Stack a flex component should not be the default. If the "split after" is empty i.e. the Stack is not intended to split,, it is needless to make it a Flex container. The flex property should only be generated if the split-after is not empty.
